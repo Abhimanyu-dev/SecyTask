@@ -3,6 +3,7 @@ import './App.css'
 import Login from './components/Login'
 import Admin from './components/Admin'
 import User from './components/User'
+import { useParams } from 'react-router-dom'
 
 function App() {
   const [rollno, setRollno] = useState("")
@@ -14,13 +15,12 @@ function App() {
 
   }, [token])
 
-
   return (
     <>
       {
         token ? 
         user["role"] === "admin" ?
-        <Admin user={user}/>:
+        <Admin user={user} token={token}/>:
         <User />:
         <Login rollno={rollno} setRollno={setRollno} password={password} setPassword={setPassword} setToken={setToken} setUser={setUser}/>  
       }
